@@ -1,13 +1,19 @@
 provider "aws" {
-  region = "us-west-1"
+  region = "us-east-1"
+}
+
+variable "ami_id" {
+  type    = string
+  default = "ami-0a0e5d9c7acc336f1"
+  description = "AMI Id of EC2 Instance"
 }
 
 module "ec2_instance" {
   source = "../modules/ec2"
 
   instance_name  = "k8s-node"
-  ami_id         = "ami-04a81a99f5ec58529"
-  instance_type  = "t2.small"
+  ami_id            = var.ami_id
+  instance_type  = "t2.medium"
   key_name       = "k8s-key-pair"
   subnet_ids     = ["subnet-0bcc595245958f9ea", "subnet-00c9e9768a794f7ea", "subnet-030dd563d5f278a4e"]
   instance_count = 3

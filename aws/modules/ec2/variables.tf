@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-1"
 }
 
 variable "instance_name" {
@@ -9,17 +9,18 @@ variable "instance_name" {
 
 variable "ami_id" {
   type    = string
-  default = "ami-04a81a99f5ec58529"
+  default = "ami-0a0e5d9c7acc336f1"
+  description = "AMI Id of EC2 Instance"
 }
 
 variable "instance_type" {
   type    = string
-  default = "t2.micro"
+  default = "t2.medium"
 }
 
 variable "key_name" {
   type    = string
-  default = "techiescamp"
+  default = "k8s-key-pair"
 }
 
 variable "security_group_ids" {
